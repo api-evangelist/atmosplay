@@ -1,22 +1,72 @@
 aid: atmosplay
 name: Atmosplay
-description: Atmosplay is a company surfaced as a portfolio company of speedinvest and added to the API
-  Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Atmosplay was a mobile advertising technology company, founded in 2014 in Budapest,
+  Hungary, that built interactive 3D "playable" ads and an ad-monetization platform for
+  mobile game publishers. Its ATMIQ cloud gameplay engine let users try a game inside an
+  ad without installing it, and its self-serve builder produced playable creatives for 3D
+  and action games. Atmosplay shipped first-party mobile SDKs (Unity, iOS, Android) plus
+  AdMob and MoPub mediation adapters for publishers to integrate interstitial, banner, and
+  rewarded-video formats. Speedinvest led its Series A in 2016; the company was acquired by
+  ZPLAY Information Technology on 2018-01-01. Its websites (atmosplay.com / atmosplay.net)
+  are no longer operational; the surviving public developer surface is its GitHub
+  organization of SDK and adapter repositories. This profile is maintained for network
+  completeness as an acquired/inactive portfolio lead.
 url: https://raw.githubusercontent.com/api-evangelist/atmosplay/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source: []
+  generated: '2026-07-22'
+  method: derived
+image: https://avatars.githubusercontent.com/u/12141997?v=4
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - speedinvest
 x-tier: stub
 x-tier-reason: portfolio-lead
+x-status: acquired
+x-acquired-by: ZPLAY Information Technology
+x-acquired-date: '2018-01-01'
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-18'
 tags:
 - Company
+- Advertising
+- AdTech
+- Mobile
+- Playable Ads
+- Ad Monetization
+- Gaming
+- SDK
 apis: []
+common:
+- type: GitHubOrganization
+  url: https://github.com/Atmosplay
+  name: Atmosplay on GitHub
+- type: Documentation
+  url: https://github.com/Atmosplay/Help-Center-for-Publisher
+  name: Help Center for Publishers
+- type: Packages
+  url: packages/atmosplay-packages.yml
+  name: Atmosplay SDKs and mediation adapters
+- type: SDKs
+  url: packages/atmosplay-packages.yml
+  name: Atmosplay mobile SDKs (Unity / iOS / Android)
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

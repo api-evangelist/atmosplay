@@ -1,0 +1,68 @@
+generated: '2026-07-18'
+method: searched
+source: https://github.com/Atmosplay
+notes: >-
+  Atmosplay's public developer surface is its GitHub organization (github.com/Atmosplay).
+  These are the first-party mobile ad SDKs and mediation adapters for the Atmosplay
+  playable-ads platform. They are distributed as source/GitHub releases (not npm/PyPI/
+  Maven/CocoaPods registries). The company's websites (atmosplay.com, atmosplay.net)
+  are no longer live — atmosplay.com is parked/for-sale — and the org's repos were
+  last updated 2019–2020, consistent with the 2018 acquisition by ZPLAY. No REST API
+  / OpenAPI is published; the integration surface is these client SDKs.
+packages:
+  - language: csharp
+    registry: github
+    name: AtmosplayAds-Unity
+    url: https://github.com/Atmosplay/AtmosplayAds-Unity
+    install: git clone https://github.com/Atmosplay/AtmosplayAds-Unity
+    official: true
+    kind: sdk
+    platform: unity
+  - language: objective-c
+    registry: github
+    name: AtmosplayAds-iOS
+    url: https://github.com/Atmosplay/AtmosplayAds-iOS
+    install: git clone https://github.com/Atmosplay/AtmosplayAds-iOS
+    official: true
+    kind: sdk
+    platform: ios
+  - language: java
+    registry: github
+    name: AtmosplayAds-Android
+    url: https://github.com/Atmosplay/AtmosplayAds-Android
+    install: git clone https://github.com/Atmosplay/AtmosplayAds-Android
+    official: true
+    kind: sdk
+    platform: android
+  - language: objective-c
+    registry: github
+    name: AdMobAdapter-AtmosplayAds-iOS
+    url: https://github.com/Atmosplay/AdMobAdapter-AtmosplayAds-iOS
+    install: git clone https://github.com/Atmosplay/AdMobAdapter-AtmosplayAds-iOS
+    official: true
+    kind: mediation-adapter
+    platform: ios
+  - language: java
+    registry: github
+    name: AdMobAdapter-AtmosplayAds-Android
+    url: https://github.com/Atmosplay/AdMobAdapter-AtmosplayAds-Android
+    install: git clone https://github.com/Atmosplay/AdMobAdapter-AtmosplayAds-Android
+    official: true
+    kind: mediation-adapter
+    platform: android
+  - language: objective-c
+    registry: github
+    name: MopubAdapter-AtmosplayAds-iOS
+    url: https://github.com/Atmosplay/MopubAdapter-AtmosplayAds-iOS
+    install: git clone https://github.com/Atmosplay/MopubAdapter-AtmosplayAds-iOS
+    official: true
+    kind: mediation-adapter
+    platform: ios
+  - language: java
+    registry: github
+    name: MopubAdapter-AtmosplayAds-Android
+    url: https://github.com/Atmosplay/MopubAdapter-AtmosplayAds-Android
+    install: git clone https://github.com/Atmosplay/MopubAdapter-AtmosplayAds-Android
+    official: true
+    kind: mediation-adapter
+    platform: android
