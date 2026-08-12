@@ -1,0 +1,34 @@
+generated: '2026-08-12'
+method: searched
+source: https://github.com/Atmosplay/AtmosplayAds-Android/wiki
+name: Atmosplay rate limits
+limit_count: 0
+limits: []
+response_headers: []
+exhaustion_status: null
+note: >-
+  NO RATE LIMITS ARE PUBLISHED. Every surviving Atmosplay surface was read — the Android,
+  iOS and Unity SDK READMEs and their English GitHub wikis, and the publisher Help Center
+  (English guides.md and Chinese 系统使用手册.md) — and none states a request quota, a
+  window, a burst allowance, a throttle, or any rate-limit response header. There is no
+  429 in the published error table; the closest published signals are SDK status codes
+  2005 "no ad" (no fill), 2007 "timeout error" and 2008 "server error", none of which
+  denote throttling.
+
+  The Report API, which is the one surface that would plausibly carry limits, documented
+  only "Signature is used to verify permission" as its interface limit — and its reference
+  lived inside the now-offline publisher dashboard, so nothing more is recoverable. Honest
+  zero, not an unchecked field.
+evidence:
+  - url: https://github.com/Atmosplay/AtmosplayAds-Android/wiki/Debugging
+    status: 200
+    note: full published error-code table — no 429 and no throttling code
+  - url: https://github.com/Atmosplay/AtmosplayAds-Android
+    status: 200
+    note: complete Android integration README — no limits section
+  - url: https://github.com/Atmosplay/Help-Center-for-Publisher/blob/master/guides.md
+    status: 200
+    note: publisher guide including the Report API mention — no limits stated
+  - url: https://atmosplay.com
+    status: 200
+    note: parked domain; no developer docs remain to consult

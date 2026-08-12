@@ -1,23 +1,86 @@
-generated: '2026-07-18'
+generated: '2026-08-12'
 method: searched
 source: https://github.com/Atmosplay
 notes: >-
   Atmosplay's public developer surface is its GitHub organization (github.com/Atmosplay).
   These are the first-party mobile ad SDKs and mediation adapters for the Atmosplay
-  playable-ads platform. They are distributed as source/GitHub releases (not npm/PyPI/
-  Maven/CocoaPods registries). The company's websites (atmosplay.com, atmosplay.net)
-  are no longer live — atmosplay.com is parked/for-sale — and the org's repos were
-  last updated 2019–2020, consistent with the 2018 acquisition by ZPLAY. No REST API
-  / OpenAPI is published; the integration surface is these client SDKs.
+  playable-ads platform. The company's websites are gone — atmosplay.com now resolves to a
+  HugeDomains "for sale" parking page (every path, including every /.well-known/*, returns
+  the same 44,825-byte HTML), and atmosplay.net no longer resolves at all — so the GitHub
+  org is the only surviving first-party distribution channel. Repos were last pushed
+  2019-12 to 2020-06, consistent with the 2018-01-01 acquisition by ZPLAY Information
+  Technology. No REST API / OpenAPI is published; the integration surface is these client
+  SDKs.
+currency_finding: >-
+  DECAY IS DOCUMENTED IN THE REGISTRIES. Only ONE Atmosplay package ever reached a public
+  package registry: the iOS pod `AtmosplayAds` on CocoaPods trunk, last published
+  3.2.1 on 2020-06-03 — six years stale as of this pass. The Android SDK's documented
+  Gradle coordinate `com.atmosplayads:atmosplayads:3.1.0` was distributed through
+  JCenter/Bintray, which JFrog shut down in 2021, and it was never migrated to Maven
+  Central (https://repo1.maven.org/maven2/com/atmosplayads/ returns 404; a Maven Central
+  search for `atmosplayads` returns numFound: 0). The dependency line printed in
+  Atmosplay's own Android integration README is therefore no longer resolvable by any
+  consumer. Every other distribution is a GitHub release/tag or bare source checkout.
+probes:
+  - url: https://trunk.cocoapods.org/api/v1/pods/AtmosplayAds
+    status: 200
+    note: 6 versions, 3.0.0 (2019-12-20) through 3.2.1 (2020-06-03)
+  - url: https://repo1.maven.org/maven2/com/atmosplayads/
+    status: 404
+    note: Android SDK never published to Maven Central
+  - url: https://search.maven.org/solrsearch/select?q=atmosplayads
+    status: 200
+    note: 'numFound: 0'
+  - url: https://registry.npmjs.org/atmosplay
+    status: 404
+  - url: https://pypi.org/pypi/atmosplay/json
+    status: 404
 packages:
+  - language: objective-c
+    registry: cocoapods
+    name: AtmosplayAds
+    url: https://cocoapods.org/pods/AtmosplayAds
+    install: pod 'AtmosplayAds'
+    official: true
+    kind: sdk
+    platform: ios
+    version: 3.2.1
+    published: '2020-06-03'
+    source: https://trunk.cocoapods.org/api/v1/pods/AtmosplayAds
+    note: >-
+      The only Atmosplay package in a live public registry. CocoaPods trunk still serves
+      it; the podspec install line is quoted verbatim from the AtmosplayAds-iOS README.
+  - language: java
+    registry: maven
+    name: com.atmosplayads:atmosplayads
+    url: https://github.com/Atmosplay/AtmosplayAds-Android
+    install: "implementation 'com.atmosplayads:atmosplayads:3.1.0'"
+    official: true
+    kind: sdk
+    platform: android
+    version: 3.1.0
+    published: null
+    source: https://github.com/Atmosplay/AtmosplayAds-Android#211-添加依赖
+    note: >-
+      Version read from the Gradle dependency line published in Atmosplay's own Android
+      README (`compile 'com.atmosplayads:atmosplayads:3.1.0'`). published is null because
+      the artifact was hosted on JCenter/Bintray, which was sunset in 2021, and it was
+      never mirrored to Maven Central — there is no registry metadata endpoint left to
+      date it, and the coordinate no longer resolves for consumers.
   - language: csharp
     registry: github
     name: AtmosplayAds-Unity
     url: https://github.com/Atmosplay/AtmosplayAds-Unity
-    install: git clone https://github.com/Atmosplay/AtmosplayAds-Unity
+    install: https://github.com/Atmosplay/AtmosplayAds-Unity/releases/download/3.2.1/AtmosplayAds_3.2.1.unitypackage
     official: true
     kind: sdk
     platform: unity
+    version: 3.2.1
+    published: '2020-06-05'
+    source: https://api.github.com/repos/Atmosplay/AtmosplayAds-Unity/releases
+    note: >-
+      Distributed as a .unitypackage attached to a GitHub release — no registry (not on
+      OpenUPM or the Unity Asset Store). 3 releases total: 3.0.0, 3.1.0, 3.2.1.
   - language: objective-c
     registry: github
     name: AtmosplayAds-iOS
@@ -26,6 +89,11 @@ packages:
     official: true
     kind: sdk
     platform: ios
+    license: MIT
+    version: 3.2.1
+    published: '2020-06-03'
+    source: https://api.github.com/repos/Atmosplay/AtmosplayAds-iOS/releases
+    note: Source repo behind the CocoaPods pod; 4 GitHub releases, 3.0.0 through 3.2.1.
   - language: java
     registry: github
     name: AtmosplayAds-Android
@@ -34,6 +102,14 @@ packages:
     official: true
     kind: sdk
     platform: android
+    license: MIT
+    version: null
+    published: null
+    source: https://api.github.com/repos/Atmosplay/AtmosplayAds-Android/releases
+    note: >-
+      Checked, nothing to record — the repo publishes no GitHub releases and no tags. The
+      only version anywhere is the 3.1.0 in the README's Gradle line (recorded on the
+      maven entry above). Last push 2020-06-05.
   - language: objective-c
     registry: github
     name: AdMobAdapter-AtmosplayAds-iOS
@@ -42,6 +118,12 @@ packages:
     official: true
     kind: mediation-adapter
     platform: ios
+    version: 3.0.1
+    published: '2019-12-26'
+    source: https://api.github.com/repos/Atmosplay/AdMobAdapter-AtmosplayAds-iOS/releases
+    note: >-
+      Adapter is pinned a full minor behind the iOS SDK it mediates (3.0.1 vs 3.2.1) and
+      has not been released since 2019-12-26.
   - language: java
     registry: github
     name: AdMobAdapter-AtmosplayAds-Android
@@ -50,6 +132,10 @@ packages:
     official: true
     kind: mediation-adapter
     platform: android
+    version: null
+    published: null
+    source: https://api.github.com/repos/Atmosplay/AdMobAdapter-AtmosplayAds-Android/releases
+    note: Checked — no releases and no tags. Last push 2020-03-04.
   - language: objective-c
     registry: github
     name: MopubAdapter-AtmosplayAds-iOS
@@ -58,6 +144,12 @@ packages:
     official: true
     kind: mediation-adapter
     platform: ios
+    version: 3.0.1
+    published: '2019-12-26'
+    source: https://api.github.com/repos/Atmosplay/MopubAdapter-AtmosplayAds-iOS/releases
+    note: >-
+      Mediates MoPub, which Twitter shut down in 2021 (absorbed into AppLovin MAX). The
+      adapter targets a platform that no longer exists.
   - language: java
     registry: github
     name: MopubAdapter-AtmosplayAds-Android
@@ -66,3 +158,35 @@ packages:
     official: true
     kind: mediation-adapter
     platform: android
+    version: null
+    published: null
+    source: https://api.github.com/repos/Atmosplay/MopubAdapter-AtmosplayAds-Android/releases
+    note: Checked — no releases and no tags. Last push 2019-12-31.
+  - language: objective-c
+    registry: github
+    name: AtmosplayAdsPreviewer-iOS
+    url: https://github.com/Atmosplay/AtmosplayAdsPreviewer-iOS
+    install: git clone https://github.com/Atmosplay/AtmosplayAdsPreviewer-iOS
+    official: true
+    kind: tool
+    platform: ios
+    version: null
+    published: null
+    source: https://api.github.com/repos/Atmosplay/AtmosplayAdsPreviewer-iOS
+    note: >-
+      Creative-preview companion app. Checked — repo reports size 0 and has no releases or
+      tags; it was created 2019-12-16 and never populated.
+  - language: java
+    registry: github
+    name: AtmosplayAdsPreviewer-Android
+    url: https://github.com/Atmosplay/AtmosplayAdsPreviewer-Android
+    install: git clone https://github.com/Atmosplay/AtmosplayAdsPreviewer-Android
+    official: true
+    kind: tool
+    platform: android
+    version: null
+    published: null
+    source: https://api.github.com/repos/Atmosplay/AtmosplayAdsPreviewer-Android
+    note: >-
+      Creative-preview companion app. Checked — repo reports size 0 and has no releases or
+      tags; it was created 2019-12-16 and never populated.

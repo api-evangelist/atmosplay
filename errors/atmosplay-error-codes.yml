@@ -1,0 +1,115 @@
+generated: '2026-08-12'
+method: searched
+source: https://github.com/Atmosplay/AtmosplayAds-Android/wiki/Debugging#Error-Code-and-Description
+sources:
+  - url: https://github.com/Atmosplay/AtmosplayAds-Android/wiki/Debugging
+    status: 200
+    note: English "Error Code and Description" table (canonical for this artifact)
+  - url: https://github.com/Atmosplay/AtmosplayAds-Android#43-状态码及含意
+    status: 200
+    note: Chinese "状态码及含意" table in the Android README — same 11 codes
+name: AtmosplayAds SDK error codes
+format: sdk-status-codes
+envelope:
+  transport: sdk-callback
+  note: >-
+    These are NOT HTTP status codes and there is no RFC 9457 problem+json envelope —
+    Atmosplay published no REST API. The codes are delivered to the integrating app
+    through the SDK's ad-lifecycle delegate/listener callbacks (Android listener
+    onXxxLoadFailed, iOS delegate methods, Unity C# callback handlers) as an integer
+    state code plus a short description string.
+  code_field: state code
+  message_field: description
+code_classes:
+  - range: 1xxx
+    meaning: Client-side request construction and permission faults — the integrating app is misconfigured.
+  - range: 2xxx
+    meaning: Ad-fill and network/transport outcomes returned from the Atmosplay ad server.
+  - range: 5xxx
+    meaning: SDK usage faults — a required object was not supplied by the host app.
+error_count: 11
+errors:
+  - code: 1001
+    title: request constructed error
+    class: client-configuration
+    retryable: false
+    description: >-
+      An error occurred while constructing the request parameters — the SDK could not
+      obtain a device token (any one of advertising_id, android_id, imei, mac_addr).
+    remediation: >-
+      Ensure at least one device identifier is available. On Android 10+ in mainland
+      China, Atmosplay's own docs recommend bundling the MSA SDK so an OAID can be read.
+  - code: 1002
+    title: request parameters error
+    class: client-configuration
+    retryable: false
+    description: Request parameters do not match — APP_ID or UNIT_ID is wrong.
+    remediation: Verify the APP_ID and AD_UNIT_ID issued on the Atmosplay dashboard were passed correctly.
+  - code: 1003
+    title: lack of WRITE_EXTERNAL_STORAGE
+    class: client-permission
+    retryable: false
+    platform: android
+    description: Unable to write a file to the device, so advertising material cannot be cached.
+    remediation: Grant the WRITE_EXTERNAL_STORAGE permission declared in the integration guide.
+  - code: 2002
+    title: preload finished
+    class: informational
+    retryable: false
+    description: The ad has finished preloading.
+    remediation: Informational — no action required.
+  - code: 2004
+    title: ads has filled
+    class: informational
+    retryable: false
+    description: An ad is already loading or has already been loaded.
+    remediation: Do not issue a duplicate load call for the same ad unit.
+  - code: 2005
+    title: no ad
+    class: fill
+    retryable: true
+    description: No ad was returned from the server.
+    remediation: Normal no-fill. Retry later or fall back to another mediated network.
+  - code: 2006
+    title: no connection error
+    class: transport
+    retryable: true
+    description: Cannot connect to the internet.
+    remediation: Check network connectivity before re-requesting.
+  - code: 2007
+    title: timeout error
+    class: transport
+    retryable: true
+    description: Network connection timed out.
+    remediation: Check the network or switch networks and retry the request.
+  - code: 2008
+    title: server error
+    class: server
+    retryable: true
+    description: An exception occurred in the advertisement service.
+    remediation: Retry later. (No status page was ever published — see lifecycle/.)
+  - code: 5001
+    title: context is null
+    class: sdk-usage
+    retryable: false
+    platform: android
+    description: The supplied context was null.
+    remediation: Check that a valid Android Context has been passed to the SDK.
+  - code: 5002
+    title: network error
+    class: transport
+    retryable: true
+    description: Generic network error.
+    remediation: Retry the request.
+gaps:
+  - >-
+    No cause/log-level/product-area columns — the registry is code + description +
+    a one-line note, which is thinner than the error registries published by peer ad
+    networks.
+  - >-
+    Codes 2001, 2003 and everything in 3xxx/4xxx are absent from the published table; it
+    is not stated whether they are unused or simply undocumented.
+  - >-
+    The Atmosplay Report API (see authentication/ and lifecycle/) documented HTTP status
+    codes inside the publisher dashboard, which is offline. Those are not recoverable
+    from any public surface and are deliberately NOT recorded here.

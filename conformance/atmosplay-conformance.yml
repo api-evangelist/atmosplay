@@ -1,0 +1,91 @@
+generated: '2026-08-12'
+method: searched
+source: https://github.com/Atmosplay/AtmosplayAds-Android/wiki/GDPR
+sources:
+  - url: https://github.com/Atmosplay/AtmosplayAds-Android/wiki/GDPR
+    status: 200
+  - url: https://github.com/Atmosplay/AtmosplayAds-Android
+    status: 200
+    note: section 4.1 GDPR, section 2.3 MSA SDK / OAID
+  - url: https://github.com/Atmosplay/AtmosplayAds-iOS
+    status: 200
+    note: PlayableAdsGDPR consent API
+name: Atmosplay standards and compliance conformance
+note: >-
+  Assessed entirely from Atmosplay's own SDK documentation. There is no OpenAPI, no
+  vocabulary and no trust center to derive from, and no certification of any kind is
+  published — see the `certifications` block. NO `Compliance` pointer is emitted for this
+  provider: a consent API is a technical control, not a published compliance program.
+conforms_count: 2
+entries:
+  - id: gdpr-consent-signalling
+    name: EU GDPR consent signalling (publisher-supplied)
+    conforms: true
+    evidence: >-
+      Since SDK 2.6.0 the SDK exposes a three-state consent API the integrating publisher
+      calls to pass a user's consent status to Atmosplay. Android:
+      `AtmosplayAdsSettings.setGDPRConsent(GDPRStatus.PERSONALIZED |
+      NON_PERSONALIZED | UNKNOWN)` with a matching `getGDPRConsent()`. iOS:
+      `[[PlayableAdsGDPR sharedGDPRManager] updatePlayableAdsConsentStatus:
+      PlayableAdsConsentStatusPersonalized]` over the same three-value enum. The Android
+      README states the section exists "为遵守欧洲联盟的一般数据保护条例(GDPR)而提供"
+      (provided in order to comply with the EU GDPR).
+    scope: android, ios
+    limits: >-
+      The SDK consumes a consent signal; it does not collect consent, and Atmosplay
+      published no CMP integration, no IAB TCF v2 support, and no data-processing terms.
+      UNKNOWN is the default.
+  - id: msa-oaid
+    name: MSA Alliance OAID (China mobile advertising identifier)
+    conforms: true
+    evidence: >-
+      The Android integration guide instructs publishers to bundle the MSA SDK (AAR +
+      supplierconfig.json) so AtmosplayAds can read an OAID, noting that from Android 10
+      onward the OAID identifier is required in mainland China and omitting it will affect
+      ad revenue. Referenced authority: http://www.msa-alliance.cn/col.jsp?id=120
+    scope: android
+  - id: iab-tcf
+    name: IAB Transparency & Consent Framework
+    conforms: false
+    evidence: No TCF string handling, CMP integration, or vendor-list registration is documented anywhere.
+  - id: ccpa
+    name: CCPA / US privacy signalling
+    conforms: false
+    evidence: No US-privacy string, LSPA reference, or CCPA opt-out API is documented.
+  - id: coppa
+    name: COPPA / child-directed treatment
+    conforms: false
+    evidence: >-
+      No child-directed / under-age-of-consent flag exists in the published SDK surface,
+      despite the product targeting mobile games.
+  - id: openrtb
+    name: OpenRTB
+    conforms: false
+    evidence: >-
+      No OpenRTB endpoint, bid-request schema, or exchange integration is published.
+      Demand was taken through mediation adapters (AdMob, MoPub), not a published RTB
+      contract.
+  - id: oauth2
+    name: OAuth 2.0
+    conforms: false
+    evidence: No OAuth surface exists. Credentials are an APP_ID/AD_UNIT_ID pair — see authentication/.
+  - id: rfc9457
+    name: RFC 9457 problem details
+    conforms: false
+    evidence: >-
+      No HTTP API is published; errors are SDK callback status codes, not problem+json.
+      See errors/atmosplay-error-codes.yml.
+  - id: openapi
+    name: OpenAPI
+    conforms: false
+    evidence: >-
+      No OpenAPI/Swagger document found on any host after probing atmosplay.com and eight
+      subdomains at /openapi.json, /swagger.json and /.well-known/*; all return the
+      HugeDomains parking page. See well-known/atmosplay-well-known.yml.
+certifications:
+  published: false
+  items: []
+  note: >-
+    No SOC 2, ISO 27001, PCI DSS, HIPAA or FedRAMP claim was found on any surviving
+    Atmosplay surface, and no trust center exists (probe-security-programs.py returned
+    vdp=none trust=none).

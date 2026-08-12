@@ -1,0 +1,100 @@
+generated: '2026-08-12'
+method: searched
+source: https://github.com/Atmosplay/AtmosplayAds-iOS/releases
+sources:
+  - url: https://api.github.com/repos/Atmosplay/AtmosplayAds-iOS/releases
+    status: 200
+  - url: https://api.github.com/repos/Atmosplay/AtmosplayAds-Unity/releases
+    status: 200
+  - url: https://api.github.com/repos/Atmosplay/AdMobAdapter-AtmosplayAds-iOS/releases
+    status: 200
+  - url: https://api.github.com/repos/Atmosplay/MopubAdapter-AtmosplayAds-iOS/releases
+    status: 200
+name: Atmosplay Ads SDK release notes
+scheme: github-releases
+has_dedicated_changelog_page: false
+note: >-
+  Atmosplay never published a changelog page — atmosplay.com is a parked domain and no
+  CHANGELOG file exists in any repo. What it did publish is dated GitHub releases with
+  short human-written notes, on four of its ten repos. The three Android repos and both
+  previewer repos carry no releases and no tags at all, so their history is not
+  reconstructible. Release notes are terse ("Finetune") and there is no breaking-change
+  marking anywhere in the set.
+current_version: 3.2.1
+current_version_date: '2020-06-05'
+window: complete history (all published releases, 2019-12-20 to 2020-06-05)
+entry_count: 11
+entries:
+  - version: 3.2.1
+    date: '2020-06-05'
+    component: unity
+    breaking: false
+    highlights:
+      - finetune window ad api
+  - version: 3.2.1
+    date: '2020-06-03'
+    component: ios
+    breaking: false
+    highlights:
+      - update window ad logic
+      - finetune window ad api
+  - version: 3.1.0
+    date: '2020-04-20'
+    component: unity
+    breaking: false
+    additions:
+      - window ad
+      - float ad
+  - version: 3.1.0
+    date: '2020-04-05'
+    component: ios
+    breaking: false
+    additions:
+      - float ad support
+      - window ad support
+  - version: 3.0.0
+    date: '2020-01-02'
+    component: unity
+    breaking: false
+    highlights:
+      - Finetune
+  - version: 3.0.1
+    date: '2019-12-26'
+    component: ios
+    breaking: false
+    highlights:
+      - finetune
+  - version: 3.0.1
+    date: '2019-12-26'
+    component: admob-adapter-ios
+    breaking: false
+    highlights:
+      - finetune
+  - version: 3.0.1
+    date: '2019-12-26'
+    component: mopub-adapter-ios
+    breaking: false
+    highlights:
+      - finetune
+  - version: 3.0.0
+    date: '2019-12-25'
+    component: ios
+    breaking: false
+    highlights:
+      - finetune
+  - version: 3.0.0
+    date: '2019-12-25'
+    component: mopub-adapter-ios
+    breaking: false
+    highlights:
+      - finetune
+  - version: 3.0.0
+    date: '2019-12-20'
+    component: admob-adapter-ios
+    breaking: false
+    highlights:
+      - finetune
+gaps:
+  - No releases or tags on AtmosplayAds-Android, AdMobAdapter-AtmosplayAds-Android, or MopubAdapter-AtmosplayAds-Android.
+  - No breaking-change annotation, migration notes, or supported-version window in any entry.
+  - Nothing published since 2020-06-05.

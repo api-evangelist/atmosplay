@@ -36,7 +36,7 @@ x-acquired-by: ZPLAY Information Technology
 x-acquired-date: '2018-01-01'
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-18'
+modified: '2026-08-12'
 tags:
 - Company
 - Advertising
@@ -60,13 +60,77 @@ common:
 - type: SDKs
   url: packages/atmosplay-packages.yml
   name: Atmosplay mobile SDKs (Unity / iOS / Android)
+- type: GettingStarted
+  url: https://github.com/Atmosplay/AtmosplayAds-Android/wiki/GetStarted
+  name: Get Started with the AtmosplayAds SDK
+- type: Authentication
+  url: authentication/atmosplay-authentication.yml
+  name: Atmosplay credential model (APP_ID / AD_UNIT_ID)
+- type: ErrorCatalog
+  url: errors/atmosplay-error-codes.yml
+  name: AtmosplayAds SDK error codes
+- type: Sandbox
+  url: sandbox/atmosplay-sandbox.yml
+  name: Atmosplay published test identifiers
+- type: ChangeLog
+  url: changelog/atmosplay-changelog.yml
+  name: Atmosplay SDK release notes
+- type: Lifecycle
+  url: lifecycle/atmosplay-lifecycle.yml
+  name: Atmosplay lifecycle and end-of-life record
+- type: Conformance
+  url: conformance/atmosplay-conformance.yml
+  name: Atmosplay standards and compliance conformance
+- type: Plans
+  url: plans/atmosplay-plans-pricing.yml
+  name: Atmosplay pricing (none published)
+- type: RateLimits
+  url: rate-limits/atmosplay-rate-limits.yml
+  name: Atmosplay rate limits (none published)
+- type: LLMsTxt
+  url: llms/atmosplay-llms.txt
+  name: Atmosplay llms.txt
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 x-enrichment:
-  date: '2026-07-19'
-  status: backfilled
+  date: '2026-08-12'
+  status: enriched
+  artifacts_added: 10
   pass: local-v1
-  note: backfilled from .gitignore signal + verified work evidence
+  note: >-
+    Full search/probe pass. Contract discovery run against atmosplay.com and eight
+    subdomains: no OpenAPI, GraphQL, MCP, AsyncAPI or agent card exists. Nine artifacts
+    written from Atmosplay's own surviving GitHub surface (error codes, test IDs,
+    credential model, release notes, lifecycle, conformance, plans, rate limits, llms.txt)
+    plus a rebuilt packages artifact with structured registry currency.
+x-coverage:
+  state: none
+  reason: defunct
+  detail: >-
+    Atmosplay was acquired by ZPLAY Information Technology on 2018-01-01 and its domain has
+    since been released — atmosplay.com now serves a HugeDomains "AtmosPlay.com is for
+    sale" parking page that answers HTTP 200 with the same 44,825-byte HTML on every path
+    and every subdomain (api., docs., sdk., dev., developer., platform., console., ads.),
+    while atmosplay.net no longer resolves at all, leaving the frozen GitHub SDK
+    organization as the only first-party surface and no callable API anywhere.
+  evidence:
+  - url: https://atmosplay.com
+    status: 200
+  - url: https://atmosplay.com/openapi.json
+    status: 200
+  - url: https://atmosplay.com/.well-known/agent-card.json
+    status: 200
+  - url: https://atmosplay.net
+    status: 0
+  - url: https://repo1.maven.org/maven2/com/atmosplayads/
+    status: 404
+  - url: https://github.com/Atmosplay
+    status: 200
+  checked: '2026-08-12'
+  note: >-
+    The three 200s above are soft-200s — the parking page, not a document. Recorded with
+    their real status per the no-fabrication rule; no WellKnown, SecurityTxt or AgentCard
+    pointer was emitted from them.

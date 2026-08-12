@@ -1,0 +1,80 @@
+generated: '2026-08-12'
+method: searched
+source: https://github.com/Atmosplay/AtmosplayAds-Android/wiki/GetStarted
+sources:
+  - url: https://github.com/Atmosplay/AtmosplayAds-Android/wiki/GetStarted
+    status: 200
+  - url: https://github.com/Atmosplay/AtmosplayAds-iOS
+    status: 200
+  - url: https://github.com/Atmosplay/Help-Center-for-Publisher/blob/master/guides.md
+    status: 200
+    note: publisher dashboard guide, sections 1.5 and 3.2
+derived_from_openapi: false
+note: >-
+  DERIVED FROM PUBLISHED DOCS, NOT FROM A SPEC. Atmosplay published no OpenAPI and no
+  securitySchemes, so this profile is assembled from the credential model its own
+  integration docs describe. Two distinct surfaces existed; only the first is publicly
+  documented in any detail.
+surfaces:
+  - name: AtmosplayAds mobile SDK
+    type: sdk-identifier-pair
+    status: documented
+    scheme: application-identifier
+    credentials:
+      - name: APP_ID
+        format: uppercase UUID (8-4-4-4-12)
+        issued_by: Atmosplay publisher dashboard ("Apps" tab)
+        transport: passed to the SDK initializer in application code
+      - name: AD_UNIT_ID
+        format: uppercase UUID (8-4-4-4-12)
+        issued_by: Atmosplay publisher dashboard ("AdUnits" tab)
+        transport: passed to the ad-object constructor in application code
+    secret: false
+    rotation: not documented
+    note: >-
+      This is an identification pair, not an authentication secret — the values ship
+      inside a distributed mobile binary and are recoverable from it. Atmosplay published
+      public TEST values for both (see sandbox/). A wrong or unmatched pair surfaces as
+      SDK error 1002 "request parameters error" (see errors/).
+  - name: Atmosplay Report API
+    type: rest
+    status: gated-and-offline
+    scheme: api-key-plus-signature
+    credentials:
+      - name: Report API parameters
+        issued_by: >-
+          The Atmosplay publisher dashboard, "Setting" tab (Chinese manual: 面板"个人信息"处)
+        transport: not publicly documented
+    reference_location: >-
+      Inside the authenticated dashboard only — the Chinese manual says the integration
+      doc was reachable via the dashboard's "帮助文档" (Help Docs) link. It was never
+      published to a public URL.
+    evidence:
+      - quote: >-
+          "We support Report API for you to acquire data from interface. You can look up
+          your Report API in the 'Setting' tab on the dashboard."
+        url: https://github.com/Atmosplay/Help-Center-for-Publisher/blob/master/guides.md
+        status: 200
+      - quote: >-
+          "我们提供Report API接口供您通过接口获取数据，Report API参数可在面板"个人信息"处获取，可点击"帮助文档"查看Report API对接文档"
+        url: https://github.com/Atmosplay/Help-Center-for-Publisher/blob/master/系统使用手册.md
+        status: 200
+    note: >-
+      Atmosplay's own publisher guide confirms a Report API EXISTED, but the reference and
+      the credentials both lived behind the dashboard login. The dashboard is gone —
+      atmosplay.com is a HugeDomains parking page — so the auth model, base URL, endpoints
+      and scopes are unrecoverable from any public surface. Nothing about this surface is
+      reconstructed or guessed here.
+oauth: false
+oauth_scopes: false
+mtls: false
+openid_connect: false
+gaps:
+  - No OAuth 2.0, OpenID Connect, or scope surface was ever published — scopes/ is correctly absent.
+  - No key-rotation, key-prefix, or credential-lifecycle policy was published.
+  - >-
+    A Report API for the ACQUIRER, ZPLAY Ads, is publicly documented at
+    github.com/zplayads/report_api (hosts pa-report.zplayads.com and
+    pa-report-en.zplayads.com, API key + sha1 signature over key/timestamp/nonce). It is
+    ZPLAY's contract, on ZPLAY's hosts, describing the ZPLAY dashboard — NOT Atmosplay's —
+    and is deliberately not adopted here. See lifecycle/ for the successor lead.

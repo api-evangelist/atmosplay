@@ -1,0 +1,79 @@
+generated: '2026-08-12'
+method: searched
+source: https://github.com/Atmosplay/AtmosplayAds-Android/wiki/Debugging#Test-ID
+sources:
+  - url: https://github.com/Atmosplay/AtmosplayAds-Android/wiki/Debugging
+    status: 200
+    note: English "Test ID" table (Android)
+  - url: https://github.com/Atmosplay/AtmosplayAds-Android
+    status: 200
+    note: Chinese "5 测试" section — same Android test IDs
+  - url: https://github.com/Atmosplay/AtmosplayAds-iOS
+    status: 200
+    note: '"Test ID" table under Tools and Debugging (iOS)'
+name: Atmosplay Ads test identifiers
+model: test-identifier-pairs
+has_hosted_sandbox: false
+has_test_mode_keys: false
+summary: >-
+  Atmosplay published no sandbox environment, no test-vs-live key prefixes and no
+  simulator/fixture tooling. What it did publish is the ad-network equivalent: fixed
+  public TEST APP_ID / AD_UNIT_ID pairs, one per ad format per platform, which return
+  house test creatives and — in the provider's own words — "won't generate revenue".
+  These values are quoted VERBATIM from Atmosplay's own integration docs; nothing here is
+  invented. There is no live counterpart to record: the Atmosplay dashboard that issued
+  production IDs is offline (atmosplay.com is a parked domain), so these public test IDs
+  are the only Atmosplay identifiers that remain publicly documented.
+usage_note: >-
+  Quoted from the docs: "You can use the following testing id when you are testing.
+  Testing id won't generate revenue. Please use official id when you release your App."
+test_credentials:
+  - platform: android
+    app_id: 5C5419C7-A2DE-88BC-A311-C3E7A646F6AF
+    units:
+      - ad_format: Banner
+        ad_unit_id: F22F347B-3D57-0C70-0B13-EFCFDF402EBA
+      - ad_format: Rewarded Video
+        ad_unit_id: 3FBEFA05-3A8B-2122-24C7-A87D0BC9FEEC
+      - ad_format: Interstitial
+        ad_unit_id: 19393189-C4EB-3886-60B9-13B39407064E
+      - ad_format: Native (managed rendering)
+        ad_unit_id: 0246FB55-3042-9F29-D4AB-21C6349EEE83
+      - ad_format: Native (self rendering)
+        ad_unit_id: BB8452AD-06E7-140B-00DC-FD6CB6B40FAA
+      - ad_format: FloatAd
+        ad_unit_id: 6324B007-21F2-963D-8514-977390BBD341
+      - ad_format: WindowAd
+        ad_unit_id: 86B87233-E2EF-C428-A35B-C736E23C8515
+  - platform: ios
+    app_id: A650AB0D-7BFC-2A81-3066-D3170947C3DA
+    units:
+      - ad_format: Rewarded Video
+        ad_unit_id: BAE5DAAC-04A2-2591-D5B0-38FA846E45E7
+      - ad_format: Interstitial
+        ad_unit_id: 0868EBC0-7768-40CA-4226-F9924221C8EB
+      - ad_format: Native (managed rendering)
+        ad_unit_id: DC9E199C-7C0B-FBFC-7E5A-26E7B5EE6BB3
+      - ad_format: Native (self rendering)
+        ad_unit_id: 25AED008-6B6F-BADB-F873-AE7CA61DFE98
+      - ad_format: Banner
+        ad_unit_id: A49521F3-339D-994F-FC80-F9C4170AA0CF
+      - ad_format: FloatAd
+        ad_unit_id: CF41E96F-D020-2AD1-9144-396D2585915E
+      - ad_format: WindowAd
+        ad_unit_id: 5D6D4B21-45B0-F76E-580C-F975B47C0388
+preview_tooling:
+  - name: AtmosplayAdsPreviewer-iOS
+    url: https://github.com/Atmosplay/AtmosplayAdsPreviewer-iOS
+    status: empty
+    note: Creative previewer repo created 2019-12-16; reports size 0 with no content.
+  - name: AtmosplayAdsPreviewer-Android
+    url: https://github.com/Atmosplay/AtmosplayAdsPreviewer-Android
+    status: empty
+    note: Creative previewer repo created 2019-12-16; reports size 0 with no content.
+caveat: >-
+  These test IDs are documented, not verified. The Atmosplay ad server they resolved
+  against was operated on infrastructure the company no longer controls; whether any of
+  them still return a creative could not be established without shipping an app, which is
+  outside this pipeline. Treat them as a record of what the provider published, not as a
+  working sandbox.

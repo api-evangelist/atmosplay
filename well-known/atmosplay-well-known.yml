@@ -1,0 +1,136 @@
+generated: '2026-08-12'
+method: probed
+source: https://atmosplay.com
+host: atmosplay.com
+result: none
+verdict: soft-200-parked-domain
+note: >-
+  NO WELL-KNOWN SURFACE EXISTS. Every path probed on atmosplay.com returns HTTP 200 with
+  Content-Type text/html and a byte-identical 44,825-byte body: the HugeDomains
+  "AtmosPlay.com is for sale" parking page (final URL after redirect:
+  https://www.hugedomains.com/domain_profile.cfm?d=atmosplay.com). This is the classic
+  soft-200 catch-all — a 200 that carries no document. NONE of these are hits and NO
+  WellKnown or SecurityTxt pointer is emitted for this provider.
+
+  The wildcard extends to every subdomain: api., docs., sdk., dev., developer.,
+  platform., console. and ads..atmosplay.com all resolve (to 54.243.117.197 /
+  13.223.25.84) and all serve the same parking page. atmosplay.net does not resolve at
+  all (NXDOMAIN, curl exit 6). The domain is no longer under the company's control —
+  Atmosplay was acquired by ZPLAY Information Technology on 2018-01-01 and the domain has
+  since been released to a domain broker.
+probes:
+  - path: /.well-known/security.txt
+    url: https://atmosplay.com/.well-known/security.txt
+    status: 200
+    content_type: text/html; charset=utf-8
+    bytes: 44825
+    hit: false
+    file: null
+    note: HugeDomains parking page, not a security.txt
+  - path: /.well-known/openid-configuration
+    url: https://atmosplay.com/.well-known/openid-configuration
+    status: 200
+    content_type: text/html; charset=utf-8
+    bytes: 44825
+    hit: false
+    file: null
+  - path: /.well-known/oauth-authorization-server
+    url: https://atmosplay.com/.well-known/oauth-authorization-server
+    status: 200
+    content_type: text/html; charset=utf-8
+    bytes: 44825
+    hit: false
+    file: null
+  - path: /.well-known/api-catalog
+    url: https://atmosplay.com/.well-known/api-catalog
+    status: 200
+    content_type: text/html; charset=utf-8
+    bytes: 44825
+    hit: false
+    file: null
+  - path: /.well-known/ai-plugin.json
+    url: https://atmosplay.com/.well-known/ai-plugin.json
+    status: 200
+    content_type: text/html; charset=utf-8
+    bytes: 44825
+    hit: false
+    file: null
+  - path: /.well-known/agent-card.json
+    url: https://atmosplay.com/.well-known/agent-card.json
+    status: 200
+    content_type: text/html; charset=utf-8
+    bytes: 44825
+    hit: false
+    file: null
+    note: >-
+      HTML, not an AgentCard. Rejected per the agent-card probe rule; no a2a/ artifact
+      written.
+  - path: /.well-known/agent.json
+    url: https://atmosplay.com/.well-known/agent.json
+    status: 200
+    content_type: text/html; charset=utf-8
+    bytes: 44825
+    hit: false
+    file: null
+    note: Legacy pre-0.3 agent card path. HTML, not an AgentCard.
+  - path: /openapi.json
+    url: https://atmosplay.com/openapi.json
+    status: 200
+    content_type: text/html; charset=utf-8
+    bytes: 44825
+    hit: false
+    file: null
+  - path: /swagger.json
+    url: https://atmosplay.com/swagger.json
+    status: 200
+    content_type: text/html; charset=utf-8
+    bytes: 44825
+    hit: false
+    file: null
+  - path: /llms.txt
+    url: https://atmosplay.com/llms.txt
+    status: 200
+    content_type: text/html; charset=utf-8
+    bytes: 44825
+    hit: false
+    file: null
+subdomain_probes:
+  - host: api.atmosplay.com
+    dns: 54.243.117.197
+    status: 200
+    hit: false
+    note: redirects to hugedomains.com parking page
+  - host: docs.atmosplay.com
+    dns: 54.243.117.197
+    status: 200
+    hit: false
+    note: redirects to hugedomains.com parking page
+  - host: sdk.atmosplay.com
+    dns: 13.223.25.84
+    status: 200
+    hit: false
+  - host: dev.atmosplay.com
+    dns: 13.223.25.84
+    status: 200
+    hit: false
+  - host: developer.atmosplay.com
+    dns: 13.223.25.84
+    status: 200
+    hit: false
+  - host: platform.atmosplay.com
+    dns: 13.223.25.84
+    status: 200
+    hit: false
+  - host: console.atmosplay.com
+    dns: 13.223.25.84
+    status: 200
+    hit: false
+  - host: ads.atmosplay.com
+    dns: 54.243.117.197
+    status: 200
+    hit: false
+  - host: atmosplay.net
+    dns: null
+    status: 0
+    hit: false
+    note: NXDOMAIN — does not resolve

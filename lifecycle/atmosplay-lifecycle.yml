@@ -1,0 +1,85 @@
+generated: '2026-08-12'
+method: searched
+source: https://github.com/Atmosplay
+sources:
+  - url: https://api.github.com/orgs/Atmosplay
+    status: 200
+  - url: https://atmosplay.com
+    status: 200
+    note: 'redirects to https://www.hugedomains.com/domain_profile.cfm?d=atmosplay.com — "AtmosPlay.com is for sale"'
+  - url: https://atmosplay.net
+    status: 0
+    note: NXDOMAIN
+name: Atmosplay Ads SDK lifecycle
+state: end-of-life
+state_evidence: >-
+  Atmosplay was acquired by ZPLAY Information Technology on 2018-01-01. Its primary domain
+  atmosplay.com now serves a HugeDomains "for sale" parking page on every path and every
+  subdomain; atmosplay.net does not resolve. The GitHub organization (created 2015-04-27,
+  org record last updated 2019-12-16) is the only surviving first-party surface, and its
+  newest push across all ten repos is 2020-06-05. No repo is archived, so GitHub gives a
+  visitor no signal that the platform is dead — the parked domain is the only tell.
+versioning:
+  scheme: semver
+  scope: per-SDK, not per-API
+  current:
+    ios: 3.2.1
+    android: '3.1.0'
+    unity: 3.2.1
+    admob_adapter_ios: 3.0.1
+    mopub_adapter_ios: 3.0.1
+  latest_release_date: '2020-06-05'
+  note: >-
+    Versioning is expressed only as SDK releases; there was no versioned API surface (no
+    /v1/ path, no version header) because no public REST API was published.
+deprecation_policy:
+  published: false
+  sunset_header: false
+  deprecation_header: false
+  rfc8594: false
+  note: >-
+    No deprecation policy, no Sunset/Deprecation header usage, no end-of-support notice.
+    The SDKs were simply abandoned in place. Consequently NO `Deprecation` pointer is
+    emitted for this provider — recording the absence is the finding.
+status_page:
+  published: false
+  url: null
+  note: >-
+    No status page was ever published, and none was found on any surviving surface. SDK
+    error 2008 "server error" tells an integrator to "try again later" with no health
+    signal to consult. NO `StatusPage` pointer is emitted.
+sla:
+  published: false
+support:
+  published_channel: >-
+    The published FAQ instructs integrators to open a GitHub issue — but points at
+    github.com/zplayads/PlayableAdsDemo-android, a repo in the ACQUIRER's organization,
+    not Atmosplay's. Post-acquisition the two orgs were operationally merged.
+  url: https://github.com/Atmosplay/AtmosplayAds-Android/wiki/Debugging#FAQ
+  status: 200
+dependency_decay:
+  - item: com.atmosplayads:atmosplayads (Android SDK)
+    finding: >-
+      Distributed via JCenter/Bintray, sunset by JFrog in 2021, never migrated to Maven
+      Central (repo1.maven.org 404, Maven Central search numFound 0). The Gradle line in
+      Atmosplay's own README no longer resolves.
+  - item: MopubAdapter-AtmosplayAds-iOS / -Android
+    finding: >-
+      Mediates MoPub, which Twitter shut down in 2021. The adapter targets a platform that
+      no longer exists.
+  - item: AtmosplayAds (CocoaPods)
+    finding: >-
+      Still served by CocoaPods trunk, last published 3.2.1 on 2020-06-03 — the only
+      Atmosplay artifact still installable from a live registry.
+successor:
+  organization: ZPLAY Ads
+  github: https://github.com/zplayads
+  website: https://www.zplayads.com
+  note: >-
+    NOT ADOPTED AS ATMOSPLAY'S CONTRACT. The acquirer's org publishes its own Report API
+    reference (github.com/zplayads/report_api) against pa-report.zplayads.com /
+    pa-report-en.zplayads.com, plus API-Document-for-publishers, a playable-creative H5
+    specification, and its own help centers. Every one of those documents names ZPLAY's
+    hosts, ZPLAY's dashboard and ZPLAY's account model, so under the pipeline's ownership
+    rule it belongs to ZPLAY Ads, not to Atmosplay. Recorded here as a network lead for a
+    separate zplay-ads profile.

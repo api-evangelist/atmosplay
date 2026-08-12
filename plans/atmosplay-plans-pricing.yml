@@ -1,0 +1,31 @@
+generated: '2026-08-12'
+method: searched
+source: https://atmosplay.com
+name: Atmosplay pricing
+plan_count: 0
+plans: []
+note: >-
+  NO PRICING IS PUBLISHED, AND NONE CAN BE. Atmosplay's pricing surface was its website,
+  and the website is gone: atmosplay.com resolves to a HugeDomains "AtmosPlay.com is for
+  sale" parking page (every path returns the same 44,825-byte HTML) and atmosplay.net does
+  not resolve. The only surviving first-party surface is the GitHub organization, which
+  carries SDK integration docs and a publisher help centre but no rate card, revenue share,
+  eCPM floor, or minimum-payout figure.
+
+  The business model IS documented, without numbers: Atmosplay was a two-sided ad network.
+  Publishers monetized inventory and were paid through the dashboard's Financial tab
+  ("check your monthly revenue", "WITHDRAW", "Payment History"), and advertisers bought
+  playable placements. The Report API returned an `income` field denominated in cents with
+  a `currency` of CNY or USD. No price, share, or threshold attached to any of it was ever
+  published publicly.
+business_model: revenue-share (mobile ad network); figures never published
+evidence:
+  - url: https://atmosplay.com
+    status: 200
+    note: 'HugeDomains parking page — final URL https://www.hugedomains.com/domain_profile.cfm?d=atmosplay.com'
+  - url: https://atmosplay.net
+    status: 0
+    note: NXDOMAIN
+  - url: https://github.com/Atmosplay/Help-Center-for-Publisher/blob/master/guides.md
+    status: 200
+    note: 'Section 4 "Financial Management" describes payouts and withdrawal, but states no rates'
