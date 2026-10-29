@@ -64,6 +64,58 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Atmosplay is a company surfaced as a portfolio company of speedinvest and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+> **Acquired or rebranded.** This company was acquired, merged or renamed. Its API, if it still exists, is offered under another name. This profile is kept as a historical record and is not maintained or rated.
 
-Backed by: speedinvest
+Atmosplay was a mobile advertising technology company, founded in 2014 in Budapest, Hungary, that built interactive 3D "playable" ads and an ad-monetization platform for mobile game publishers. Its ATMIQ cloud gameplay engine let users try a game inside an ad without installing it, and its self-serve builder produced playable creatives for 3D and action games. Atmosplay shipped first-party mobile SDKs (Unity, iOS, Android) plus AdMob and MoPub mediation adapters for publishers to integrate interstitial, banner, and rewarded-video formats. Speedinvest led its Series A in 2016; the company was acquired by ZPLAY Information Technology on 2018-01-01. Its websites (atmosplay.com / atmosplay.net) are no longer operational; the surviving public developer surface is its GitHub organization of SDK and adapter repositories. This profile is maintained for network completeness as an acquired/inactive portfolio lead.
+
+**Areas:** Company · Advertising · AdTech · Mobile · Playable Ads · Ad Monetization · Gaming · SDK
+
+## Atmosplay on APIs.io (historical record)
+
+Everything profiled for Atmosplay is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/atmosplay/](https://apis.io/providers/atmosplay/)** — or go straight to one of the APIs or properties below.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Security (1)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Atmosplay Authentication](https://apis.io/security/atmosplay/atmosplay-authentication/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Atmosplay Plans Pricing](https://apis.io/plans/atmosplay/atmosplay-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Atmosplay Rate Limits](https://apis.io/rate-limits/atmosplay/atmosplay-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Documentation](https://github.com/Atmosplay/Help-Center-for-Publisher)
+- [Getting started](https://github.com/Atmosplay/AtmosplayAds-Android/wiki/GetStarted)
+- [GitHub](https://github.com/Atmosplay)
+
+## API Evangelist rating
+
+**Not rated** — this company is recorded as acquired or rebranded, so no score is published. If it is in fact operating, say so on this repository and it will be re-profiled.
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Atmosplay: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/atmosplay/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
